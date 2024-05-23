@@ -61,6 +61,7 @@ class Ui_CreateItemWindow(object):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem)
         self.create_btn = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.create_btn.setText("")
         self.create_btn.setObjectName("create_btn")
         self.horizontalLayout_5.addWidget(self.create_btn)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -84,5 +85,4 @@ class Ui_CreateItemWindow(object):
         self.textEdit.setPlaceholderText(_translate("CreateItemWindow", "Описание"))
         self.label_3.setText(_translate("CreateItemWindow", "Количество:"))
         self.label_2.setText(_translate("CreateItemWindow", "Цена:"))
-        self.create_btn.setText(_translate("CreateItemWindow", "Создать"))
         self.cancel_btn.setText(_translate("CreateItemWindow", "Отмена"))

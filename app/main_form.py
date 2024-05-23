@@ -57,6 +57,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.create_btn.clicked.connect(self.create_item)
         self.categoryes_btn.clicked.connect(self.categories)
         self.categoryes_btn.show()
+        
     
     def get_all_users(self):
         self.setWindowTitle('Пользователи')

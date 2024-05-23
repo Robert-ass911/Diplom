@@ -74,7 +74,7 @@ INSERT INTO posts (name) VALUES
     ('Менеджер');
 
 INSERT INTO users (name, phone, email, login, password, post_id) VALUES 
-    ('Иванов Иван', 1234567, 'ivanov@example.com', 'ivanov', 'pass123', 1),
+    ('Иванов Иван', 1234567, 'ivanov@example.com', 'admin', 'admin', 1),
     ('Петров Петр', 9876543, 'petrov@example.com', 'petrov', 'pass456', 2),
     ('Сидоров Сидор', 5554321, 'sidorov@example.com', 'sidorov', 'pass789', 2);
 

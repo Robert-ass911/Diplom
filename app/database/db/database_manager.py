@@ -6,19 +6,19 @@ DB_PATH = 'app\\database\\db\\base.sqlite'
 
 class DBManager:
     def __init__(self):
-        if not self.check_base():
-            self.create_base()
+        if not self.__check_base():
+            self.__create_base()
             
-    def check_base(self) -> bool:
+    def __check_base(self) -> bool:
         return os.path.exists(DB_PATH)
 
-    def connect_to_base(self):
+    def __connect_to_base(self):
         conn = sqlite3.connect(DB_PATH)
         cur = conn.cursor()
         return conn, cur
 
-    def create_base(self):
-        conn, cur = self.connect_to_base()
+    def __create_base(self):
+        conn, cur = self.__connect_to_base()
         try:
             cur.executescript(open(DATA_PATH, encoding="utf-8").read())
             conn.commit()
@@ -29,7 +29,7 @@ class DBManager:
             conn.close()
 
     def execute(self, query: str, args=(), many: bool = True):
-        conn, cur = self.connect_to_base()
+        conn, cur = self.__connect_to_base()
         try:
             res = cur.execute(query, args)
             result = res.fetchall() if many else res.fetchone()
@@ -45,5 +45,3 @@ class DBManager:
             return {"code": 400, 'eror': str(er)}
         finally:
             conn.close()
-
-base = DBManager()

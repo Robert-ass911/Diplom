@@ -7,6 +7,7 @@ from .create_supplaer_form import CreateSupplaerWindow
 from .create_user_form import CreateUserWindow
 from .categoryes_form import CategoriesWindow
 from .database.items import item
+from .database.users import user
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -25,6 +26,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.supplies_btn.clicked.connect(self.get_all_supplies)
         self.suppliers_btn.clicked.connect(self.get_all_suppliers)
     
+    def clear_table(self):
+        self.data_table.clear()
+        self.data_table.setRowCount(0)
+        self.data_table.setColumnCount(0)
     
     def item(self, item_id=None):
         if item_id:
@@ -33,8 +38,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.main_window = CreateItemWindow()
         self.main_window.show()
     
-    def user(self):
-        self.main_window = CreateUserWindow()
+    def user(self, user_id=None):
+        if user_id:
+            self.main_window = CreateUserWindow(user_id)
+        else:
+            self.main_window = CreateUserWindow()
         self.main_window.show()
     
     def order(self):
@@ -58,15 +66,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         item.delete_item(id)
         self.get_all_items()
     
+    def delete_user(self, id):
+        user.delete_user(id)
+        self.get_all_users()
     
-    def clear_table(self):
-        self.data_table.clear()
-        self.data_table.setRowCount(0)
-        self.data_table.setColumnCount(0)
     
     def get_all_items(self):
         self.setWindowTitle('Товары')
         self.create_btn.clicked.connect(self.item)
+        self.create_btn.show()
         self.categoryes_btn.clicked.connect(self.categories)
         self.categoryes_btn.show()
         
@@ -98,14 +106,48 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def get_all_users(self):
         self.setWindowTitle('Пользователи')
-        self.create_btn.clicked.connect(self.user)
+        if user.post_id == 1:
+            self.create_btn.clicked.connect(self.user)
+            self.create_btn.show()
+        else:
+            self.create_btn.hide()
+            
         self.categoryes_btn.hide()
         
         self.clear_table()
+        
+        users = user.get_users()
+        if users['code'] == 200:
+            col_row = 0
+            users = users['data']
+            row = len(users)
+            self.data_table.setRowCount(row)
+            
+            if user.post_id == 1:
+                self.data_table.setColumnCount(6)
+            else:
+                self.data_table.setColumnCount(4)
+                
+            self.data_table.setHorizontalHeaderLabels(
+                ['Имя', 'Телефон', 'Почта', 'Должность', '', '']) 
+            for us in users:
+                self.data_table.setItem(col_row, 0, QTableWidgetItem(str(us[1])))
+                self.data_table.setItem(col_row, 1, QTableWidgetItem(str(us[2])))
+                self.data_table.setItem(col_row, 2, QTableWidgetItem(str(us[3])))
+                self.data_table.setItem(col_row, 3, QTableWidgetItem(str(user.get_post(us[4]))))
+                if user.post_id == 1:
+                    self.delte_item_btn =  QPushButton('Удалить')
+                    self.delte_item_btn.clicked.connect(lambda _, data=us[0]: self.delete_user(data))
+                    self.data_table.setCellWidget(col_row, 4, self.delte_item_btn)
+                    self.update_user_btn =  QPushButton('Изменить')
+                    self.update_user_btn.clicked.connect(lambda _, data=us[0]: self.user(data))
+                    self.data_table.setCellWidget(col_row, 5, self.update_user_btn)
+                col_row += 1
     
     def get_all_orders(self):
         self.setWindowTitle('Заказы')
         self.create_btn.clicked.connect(self.order)
+        self.create_btn.show()
         self.categoryes_btn.hide()
         
         self.clear_table()
@@ -113,6 +155,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def get_all_supplies(self):
         self.setWindowTitle('Поставки')
         self.create_btn.clicked.connect(self.shipment)
+        self.create_btn.show()
         self.categoryes_btn.hide()
         
         self.clear_table()
@@ -120,6 +163,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def get_all_suppliers(self):
         self.setWindowTitle('Поставщики')
         self.create_btn.clicked.connect(self.supplier)
+        self.create_btn.show()
         self.categoryes_btn.hide()
         
         self.clear_table()

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>378</width>
+    <width>325</width>
     <height>226</height>
    </rect>
   </property>
@@ -43,7 +43,14 @@
        </layout>
       </item>
       <item>
-       <widget class="QTableView" name="tableView"/>
+       <widget class="QTableWidget" name="tableWidget">
+        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+       </widget>
       </item>
      </layout>
     </item>

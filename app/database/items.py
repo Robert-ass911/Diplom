@@ -43,9 +43,23 @@ class ItemDatabaseScripts(DBManager):
         
         return req
     
+    def create_category(self, name):
+        req = self.execute("INSERT INTO categoryes(name) "
+                        "VALUES (?) ", 
+                        args=(name, ), many=False)
+        
+        return req
+    
     def get_categoryes(self):
         req = self.execute("SELECT * "
                 "FROM categoryes ")
+        
+        return req
+    
+    def delete_category(self, category_id):
+        req = self.execute("DELETE FROM categoryes "
+                         "WHERE id = ?",
+                        args=(category_id, ))
         
         return req
     

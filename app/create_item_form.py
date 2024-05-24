@@ -62,7 +62,7 @@ class CreateItemWindow(QMainWindow, Ui_CreateItemWindow):
     def update_item(self):
         res, data = self.check_data()
         if res:
-            print(item.update_item(self.id, data[0], data[1], data[2], data[3], data[4]))
+            item.update_item(self.id, data[0], data[1], data[2], data[3], data[4])
             self.close()
             
     def update_item_form(self, id_item):

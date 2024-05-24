@@ -49,7 +49,7 @@ class UserDatabaseScripts(DBManager):
     
     def create_user(self, name, phone, email, login, password):
         req = self.execute("INSERT INTO users(name, phone, email, login, password, post_id) "
-                        "VALUES (?, ?, ?, ? ,?, 2) ", 
+                        "VALUES (?, ?, ?, ?, ?, 2) ", 
                         args=(name, phone, email, login, password, ), many=False)
         
         return req

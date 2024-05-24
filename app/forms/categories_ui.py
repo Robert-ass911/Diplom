@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_CategoriesWindow(object):
     def setupUi(self, CategoriesWindow):
         CategoriesWindow.setObjectName("CategoriesWindow")
-        CategoriesWindow.resize(325, 226)
+        CategoriesWindow.resize(258, 293)
         self.centralwidget = QtWidgets.QWidget(parent=CategoriesWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -41,6 +41,9 @@ class Ui_CategoriesWindow(object):
         self.tableWidget.horizontalHeader().setSortIndicatorShown(True)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.verticalLayout.addWidget(self.tableWidget)
+        self.cancel_btn = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.cancel_btn.setObjectName("cancel_btn")
+        self.verticalLayout.addWidget(self.cancel_btn)
         self.verticalLayout_2.addLayout(self.verticalLayout)
         CategoriesWindow.setCentralWidget(self.centralwidget)
 
@@ -52,3 +55,4 @@ class Ui_CategoriesWindow(object):
         CategoriesWindow.setWindowTitle(_translate("CategoriesWindow", "MainWindow"))
         self.label.setText(_translate("CategoriesWindow", "Имя:"))
         self.create_btn.setText(_translate("CategoriesWindow", "Создать"))
+        self.cancel_btn.setText(_translate("CategoriesWindow", "Отмена"))

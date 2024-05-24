@@ -11,6 +11,7 @@ class CategoriesWindow(QMainWindow, Ui_CategoriesWindow):
         self.print_categories()
         
         self.create_btn.clicked.connect(self.crate_cetegory)
+        self.cancel_btn.clicked.connect(self.close)
     
     def get_categories(self):
         categories = item.get_categoryes()
@@ -19,7 +20,7 @@ class CategoriesWindow(QMainWindow, Ui_CategoriesWindow):
     
     def crate_cetegory(self):
         name = self.name_line.text()
-        print(item.create_category(name))
+        item.create_category(name)
         self.print_categories()
     
     def delete_category(self, category_id):

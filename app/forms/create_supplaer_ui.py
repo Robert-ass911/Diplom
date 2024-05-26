@@ -51,6 +51,7 @@ class Ui_CreateSupplaerWindow(object):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem)
         self.create_btn = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.create_btn.setText("")
         self.create_btn.setObjectName("create_btn")
         self.horizontalLayout_5.addWidget(self.create_btn)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -73,5 +74,4 @@ class Ui_CreateSupplaerWindow(object):
         self.label.setText(_translate("CreateSupplaerWindow", "Название организации:"))
         self.label_2.setText(_translate("CreateSupplaerWindow", "Телефон:"))
         self.label_3.setText(_translate("CreateSupplaerWindow", "Аддрес:"))
-        self.create_btn.setText(_translate("CreateSupplaerWindow", "Создать"))
         self.cancel_btn.setText(_translate("CreateSupplaerWindow", "Отмена"))

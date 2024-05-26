@@ -55,8 +55,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.main_window = CreateShipmentiWindow()
         self.main_window.show()
         
-    def supplier(self):
-        self.main_window = CreateSupplaerWindow()
+    def supplier(self, supplaer_id):
+        if supplaer_id:
+            self.main_window = CreateSupplaerWindow(supplaer_id)
+        else:
+            self.main_window = CreateSupplaerWindow()
         self.main_window.show()
         
     def categories(self):
@@ -71,6 +74,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def delete_user(self, id):
         user.delete_user(id)
         self.get_all_users()
+        
+    def delete_supplaer(self, id):
+        shipment.delete_supplaer(id)
+        self.get_all_suppliers()
     
     
     def get_all_items(self):
@@ -220,3 +227,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.categoryes_btn.hide()
         
         self.clear_table()
+        
+        suppliers = shipment.get_supplaers()
+        if suppliers['code'] == 200:
+            col_row = 0
+            suppliers = suppliers['data']
+            row = len(suppliers)
+            self.data_table.setRowCount(row) 
+            self.data_table.setColumnCount(5)
+            self.data_table.setHorizontalHeaderLabels(
+                ['Название', 'Телефон', 'Аддрес', '', '']) 
+            for it in suppliers:
+                self.data_table.setItem(col_row, 0, QTableWidgetItem(str(it[1])))
+                self.data_table.setItem(col_row, 1, QTableWidgetItem(str(it[2])))
+                self.data_table.setItem(col_row, 2, QTableWidgetItem(str(it[3])))
+                self.delte_item_btn =  QPushButton('Удалить')
+                self.delte_item_btn.clicked.connect(lambda _, data=it[0]: self.delete_supplaer(data))
+                self.data_table.setCellWidget(col_row, 3, self.delte_item_btn)
+                self.update_item_btn =  QPushButton('Изменить')
+                self.update_item_btn.clicked.connect(lambda _, data=it[0]: self.supplier(data))
+                self.data_table.setCellWidget(col_row, 4, self.update_item_btn)
+                col_row += 1

@@ -9,6 +9,7 @@ from .categoryes_form import CategoriesWindow
 from .database.items import item
 from .database.users import user
 from .database.orders import order
+from .database.supplies import shipment
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -186,6 +187,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.categoryes_btn.hide()
         
         self.clear_table()
+        
+        supplies = shipment.get_supplies()
+        if supplies['code'] == 200:
+            supplies = supplies['data']
+            col_row = 0
+            row = len(supplies)
+            self.data_table.setRowCount(row) 
+            self.data_table.setColumnCount(4)
+            self.data_table.setHorizontalHeaderLabels(
+                ['Дата', 'Кол-во', 'Товар', 'Поставщик']) 
+            for sup in supplies:
+                
+                sup_item = item.get_item(sup[3])
+                if sup_item:
+                    sup_item = sup_item[1]
+                    
+                sup_suppliers = shipment.get_supplaer(sup[4])
+                if sup_suppliers['code'] == 200:
+                    sup_suppliers = sup_suppliers['data'][1]
+                    
+                self.data_table.setItem(col_row, 0, QTableWidgetItem(str(sup[1])))
+                self.data_table.setItem(col_row, 1, QTableWidgetItem(str(sup[2])))
+                self.data_table.setItem(col_row, 2, QTableWidgetItem(str(sup_item)))
+                self.data_table.setItem(col_row, 3, QTableWidgetItem(str(sup_suppliers)))
+                col_row += 1
     
     def get_all_suppliers(self):
         self.setWindowTitle('Поставщики')

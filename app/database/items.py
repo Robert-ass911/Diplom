@@ -36,6 +36,21 @@ class ItemDatabaseScripts(DBManager):
         
         return req
     
+    def update_quantity_item(self, id, quantity):
+        
+        quantity_item = self.get_item(id)
+        if quantity_item:
+            quantity_item = quantity_item[3] - quantity
+
+            req = self.execute("UPDATE items "
+                            "SET quantity = ? "
+                            "WHERE id = ?", 
+                            args=(quantity_item, id), many=False)
+            
+            return True
+        else:
+            return False
+    
     def delete_item(self, item_id):
         req = self.execute("DELETE FROM items "
                          "WHERE id = ?",

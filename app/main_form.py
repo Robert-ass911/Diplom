@@ -8,6 +8,7 @@ from .create_user_form import CreateUserWindow
 from .categoryes_form import CategoriesWindow
 from .database.items import item
 from .database.users import user
+from .database.orders import order
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -151,6 +152,32 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.categoryes_btn.hide()
         
         self.clear_table()
+        
+        orders = order.get_orders()
+        if orders['code'] == 200:
+            col_row = 0
+            orders = orders['data']
+            row = len(orders)
+            self.data_table.setRowCount(row) 
+            self.data_table.setColumnCount(5)
+            self.data_table.setHorizontalHeaderLabels(
+                ['Дата', 'Кол-во', 'Цена', 'Менеджер', 'Товар']) 
+            for ord in orders:
+                
+                ord_user = user.get_user(ord[4])
+                if ord_user['code'] == 200:
+                    ord_user = ord_user['data'][1]
+                
+                ord_item = item.get_item(ord[5])
+                if ord_item:
+                    ord_item = ord_item[1]
+                    
+                self.data_table.setItem(col_row, 0, QTableWidgetItem(str(ord[1])))
+                self.data_table.setItem(col_row, 1, QTableWidgetItem(str(ord[2])))
+                self.data_table.setItem(col_row, 2, QTableWidgetItem(str(ord[3])))
+                self.data_table.setItem(col_row, 3, QTableWidgetItem(str(ord_user)))
+                self.data_table.setItem(col_row, 4, QTableWidgetItem(str(ord_item)))
+                col_row += 1
     
     def get_all_supplies(self):
         self.setWindowTitle('Поставки')

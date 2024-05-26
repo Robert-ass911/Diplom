@@ -101,4 +101,4 @@ INSERT INTO supplies (data, quantity, item_id, supplaer_id) VALUES
 INSERT INTO orders (data, quantity, price_order, user_id, item_id) VALUES 
     ('2024-05-22', 2, 200, 1, 1),
     ('2024-05-22', 5, 100, 2, 2),
-    ('2024-05-22', 3, 75, 3, 3);
+    ('2024-05-22', 3, 75, 1, 3);

@@ -20,8 +20,9 @@ class CategoriesWindow(QMainWindow, Ui_CategoriesWindow):
     
     def crate_cetegory(self):
         name = self.name_line.text()
-        item.create_category(name)
-        self.print_categories()
+        if name:
+            item.create_category(name)
+            self.print_categories()
     
     def delete_category(self, category_id):
         item.delete_category(category_id)

@@ -24,4 +24,3 @@ class LoginWindow(QMainWindow, Ui_LoginWindow):
             self.close()
         else:
             print('EROR LOGIN')
-        

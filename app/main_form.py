@@ -84,6 +84,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setWindowTitle('Товары')
         self.create_btn.clicked.connect(self.item)
         self.create_btn.show()
+        self.categoryes_btn.disconnect()
         self.categoryes_btn.clicked.connect(self.categories)
         self.categoryes_btn.show()
         

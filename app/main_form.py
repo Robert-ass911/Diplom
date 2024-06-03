@@ -82,6 +82,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def get_all_items(self):
         self.setWindowTitle('Товары')
+        self.create_btn.disconnect()
         self.create_btn.clicked.connect(self.item)
         self.create_btn.show()
         self.categoryes_btn.disconnect()
@@ -117,6 +118,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def get_all_users(self):
         self.setWindowTitle('Пользователи')
         if user.post_id == 1:
+            self.create_btn.disconnect()
             self.create_btn.clicked.connect(self.user)
             self.create_btn.show()
         else:
@@ -156,6 +158,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def get_all_orders(self):
         self.setWindowTitle('Заказы')
+        self.create_btn.disconnect()
         self.create_btn.clicked.connect(self.order)
         self.create_btn.show()
         self.categoryes_btn.hide()
@@ -190,6 +193,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def get_all_supplies(self):
         self.setWindowTitle('Поставки')
+        self.create_btn.disconnect()
         self.create_btn.clicked.connect(self.shipment)
         self.create_btn.show()
         self.categoryes_btn.hide()
@@ -223,6 +227,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def get_all_suppliers(self):
         self.setWindowTitle('Поставщики')
+        self.create_btn.disconnect()
         self.create_btn.clicked.connect(self.supplier)
         self.create_btn.show()
         self.categoryes_btn.hide()

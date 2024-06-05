@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'app\forms\ui\login.ui'
+# Form implementation generated from reading ui file '.\app\forms\ui\login.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_LoginWindow(object):
     def setupUi(self, LoginWindow):
         LoginWindow.setObjectName("LoginWindow")
-        LoginWindow.resize(261, 147)
+        LoginWindow.resize(476, 286)
         self.centralwidget = QtWidgets.QWidget(parent=LoginWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -23,7 +23,7 @@ class Ui_LoginWindow(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.label_3 = QtWidgets.QLabel(parent=self.centralwidget)
         font = QtGui.QFont()
-        font.setPointSize(15)
+        font.setPointSize(34)
         font.setBold(True)
         self.label_3.setFont(font)
         self.label_3.setTextFormat(QtCore.Qt.TextFormat.AutoText)
@@ -37,19 +37,26 @@ class Ui_LoginWindow(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
         self.label.setObjectName("label")
         self.horizontalLayout_3.addWidget(self.label)
         self.name_input = QtWidgets.QLineEdit(parent=self.centralwidget)
-        self.name_input.setMinimumSize(QtCore.QSize(200, 0))
+        self.name_input.setMinimumSize(QtCore.QSize(200, 30))
         self.name_input.setObjectName("name_input")
         self.horizontalLayout_3.addWidget(self.name_input)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label_2 = QtWidgets.QLabel(parent=self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_2.addWidget(self.label_2)
         self.pass_input = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.pass_input.setMinimumSize(QtCore.QSize(0, 30))
         self.pass_input.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.pass_input.setObjectName("pass_input")
         self.horizontalLayout_2.addWidget(self.pass_input)
@@ -62,6 +69,10 @@ class Ui_LoginWindow(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.login = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.login.setMinimumSize(QtCore.QSize(150, 39))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.login.setFont(font)
         self.login.setObjectName("login")
         self.horizontalLayout.addWidget(self.login)
         self.horizontalLayout_4.addLayout(self.horizontalLayout)

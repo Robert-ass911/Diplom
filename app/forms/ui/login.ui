@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>261</width>
-    <height>147</height>
+    <width>476</width>
+    <height>286</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
          <widget class="QLabel" name="label_3">
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>34</pointsize>
             <bold>true</bold>
            </font>
           </property>
@@ -46,6 +46,11 @@
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
                <widget class="QLabel" name="label">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Имя:</string>
                 </property>
@@ -56,7 +61,7 @@
                 <property name="minimumSize">
                  <size>
                   <width>200</width>
-                  <height>0</height>
+                  <height>30</height>
                  </size>
                 </property>
                 <property name="placeholderText">
@@ -70,6 +75,11 @@
              <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
                <widget class="QLabel" name="label_2">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Пароль:</string>
                 </property>
@@ -77,6 +87,12 @@
               </item>
               <item>
                <widget class="QLineEdit" name="pass_input">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
                 <property name="echoMode">
                  <enum>QLineEdit::Password</enum>
                 </property>
@@ -108,6 +124,17 @@
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
                <widget class="QPushButton" name="login">
+                <property name="minimumSize">
+                 <size>
+                  <width>150</width>
+                  <height>39</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Ligin</string>
                 </property>

@@ -74,7 +74,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def delete_user(self, id):
         user.delete_user(id)
         self.get_all_users()
-        
+    
+    def delete_order(self, id):
+        order.delete_order(id)
+        self.get_all_orders()
+    
+    def delete_supply(self, id):
+        shipment.delete_shipment(id)
+        self.get_all_supplies()
+    
     def delete_supplaer(self, id):
         shipment.delete_supplaer(id)
         self.get_all_suppliers()
@@ -171,9 +179,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             orders = orders['data']
             row = len(orders)
             self.data_table.setRowCount(row) 
-            self.data_table.setColumnCount(5)
+            self.data_table.setColumnCount(6)
             self.data_table.setHorizontalHeaderLabels(
-                ['Дата', 'Кол-во', 'Цена', 'Менеджер', 'Товар']) 
+                ['Дата', 'Кол-во', 'Цена', 'Менеджер', 'Товар', '']) 
             for ord in orders:
                 
                 ord_user = user.get_user(ord[4])
@@ -189,6 +197,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.data_table.setItem(col_row, 2, QTableWidgetItem(str(ord[3])))
                 self.data_table.setItem(col_row, 3, QTableWidgetItem(str(ord_user)))
                 self.data_table.setItem(col_row, 4, QTableWidgetItem(str(ord_item)))
+                self.delte_item_btn =  QPushButton('Удалить')
+                self.delte_item_btn.clicked.connect(lambda _, data=ord[0]: self.delete_order(data))
+                self.data_table.setCellWidget(col_row, 5, self.delte_item_btn)
                 col_row += 1
     
     def get_all_supplies(self):
@@ -206,9 +217,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             col_row = 0
             row = len(supplies)
             self.data_table.setRowCount(row) 
-            self.data_table.setColumnCount(4)
+            self.data_table.setColumnCount(5)
             self.data_table.setHorizontalHeaderLabels(
-                ['Дата', 'Кол-во', 'Товар', 'Поставщик']) 
+                ['Дата', 'Кол-во', 'Товар', 'Поставщик', '']) 
             for sup in supplies:
                 
                 sup_item = item.get_item(sup[3])
@@ -223,6 +234,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.data_table.setItem(col_row, 1, QTableWidgetItem(str(sup[2])))
                 self.data_table.setItem(col_row, 2, QTableWidgetItem(str(sup_item)))
                 self.data_table.setItem(col_row, 3, QTableWidgetItem(str(sup_suppliers)))
+                self.delte_item_btn =  QPushButton('Удалить')
+                self.delte_item_btn.clicked.connect(lambda _, data=sup[0]: self.delete_supply(data))
+                self.data_table.setCellWidget(col_row, 4, self.delte_item_btn)
                 col_row += 1
     
     def get_all_suppliers(self):

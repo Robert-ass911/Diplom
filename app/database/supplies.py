@@ -17,6 +17,13 @@ class SuppliesDatabaseScripts(DBManager):
         
         return req
     
+    def delete_shipment(self, supply_id):
+        req = self.execute("DELETE FROM supplies "
+                         "WHERE id = ?",
+                        args=(supply_id, ))
+        
+        return req
+    
     def get_supplaers(self):
         req = self.execute("SELECT * "
                         "FROM suppliers ")

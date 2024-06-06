@@ -256,7 +256,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.data_table.setRowCount(row) 
             self.data_table.setColumnCount(5)
             self.data_table.setHorizontalHeaderLabels(
-                ['Название', 'Телефон', 'Аддрес', '', '']) 
+                ['Название', 'Телефон', 'Адрес', '', '']) 
             for it in suppliers:
                 self.data_table.setItem(col_row, 0, QTableWidgetItem(str(it[1])))
                 self.data_table.setItem(col_row, 1, QTableWidgetItem(str(it[2])))

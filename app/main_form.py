@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QMainWindow, QTableWidgetItem, QPushButton
+from PyQt6.QtWidgets import QMainWindow, QTableWidgetItem, QPushButton, QMessageBox
 from .forms.main_ui import Ui_MainWindow
 from .create_item_form import CreateItemWindow
 from .create_order_form import CreateOrderWindow
@@ -32,6 +32,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.data_table.clear()
         self.data_table.setRowCount(0)
         self.data_table.setColumnCount(0)
+        
+    def warning_window(self, titel, text):
+        '''Вывод окна с предупреждением'''
+        message_box = QMessageBox()
+        message_box.setWindowTitle(titel)
+        message_box.setText(text)
+        message_box.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        result = message_box.exec()
+        if result == QMessageBox.StandardButton.Yes:
+            return True
+        else:
+            return False
     
     def item(self, item_id=None):
         if item_id:
@@ -68,24 +80,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     
     def delete_item(self, id):
-        item.delete_item(id)
-        self.get_all_items()
+        if self.warning_window('Удаление товара', 'Удвлить товар?'):
+            item.delete_item(id)
+            self.get_all_items()
     
     def delete_user(self, id):
-        user.delete_user(id)
-        self.get_all_users()
+        if self.warning_window('Удаление пользователя', 'Удвлить пользователя?'):
+            user.delete_user(id)
+            self.get_all_users()
     
     def delete_order(self, id):
-        order.delete_order(id)
-        self.get_all_orders()
+        if self.warning_window('Удаление заказа', 'Удвлить заказ?'):
+            order.delete_order(id)
+            self.get_all_orders()
     
     def delete_supply(self, id):
-        shipment.delete_shipment(id)
-        self.get_all_supplies()
+        if self.warning_window('Удаление поставки', 'Удвлить ппоставку?'):
+            shipment.delete_shipment(id)
+            self.get_all_supplies()
     
     def delete_supplaer(self, id):
-        shipment.delete_supplaer(id)
-        self.get_all_suppliers()
+        if self.warning_window('Удаление поставщика', 'Удвлить поставщика?'):
+            shipment.delete_supplaer(id)
+            self.get_all_suppliers()
     
     
     def get_all_items(self):
@@ -256,7 +273,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.data_table.setRowCount(row) 
             self.data_table.setColumnCount(5)
             self.data_table.setHorizontalHeaderLabels(
-                ['Название', 'Телефон', 'Аддрес', '', '']) 
+                ['Название', 'Телефон', 'Адрес', '', '']) 
             for it in suppliers:
                 self.data_table.setItem(col_row, 0, QTableWidgetItem(str(it[1])))
                 self.data_table.setItem(col_row, 1, QTableWidgetItem(str(it[2])))

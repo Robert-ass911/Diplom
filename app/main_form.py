@@ -80,27 +80,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     
     def delete_item(self, id):
-        if self.warning_window('Удаление товара', 'Удвлить товар?'):
+        if self.warning_window('Удаление товара', 'Удалить товар?'):
             item.delete_item(id)
             self.get_all_items()
     
     def delete_user(self, id):
-        if self.warning_window('Удаление пользователя', 'Удвлить пользователя?'):
+        if self.warning_window('Удаление пользователя', 'Удалить пользователя?'):
             user.delete_user(id)
             self.get_all_users()
     
     def delete_order(self, id):
-        if self.warning_window('Удаление заказа', 'Удвлить заказ?'):
+        if self.warning_window('Удаление заказа', 'Удалить заказ?'):
             order.delete_order(id)
             self.get_all_orders()
     
     def delete_supply(self, id):
-        if self.warning_window('Удаление поставки', 'Удвлить ппоставку?'):
+        if self.warning_window('Удаление поставки', 'Удалить поставку?'):
             shipment.delete_shipment(id)
             self.get_all_supplies()
     
     def delete_supplaer(self, id):
-        if self.warning_window('Удаление поставщика', 'Удвлить поставщика?'):
+        if self.warning_window('Удаление поставщика', 'Удалить поставщика?'):
             shipment.delete_supplaer(id)
             self.get_all_suppliers()
     

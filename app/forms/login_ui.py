@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\app\forms\ui\login.ui'
+# Form implementation generated from reading ui file 'app\forms\ui\login.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -95,4 +95,4 @@ class Ui_LoginWindow(object):
         self.name_input.setPlaceholderText(_translate("LoginWindow", "Name"))
         self.label_2.setText(_translate("LoginWindow", "Пароль:"))
         self.pass_input.setPlaceholderText(_translate("LoginWindow", "Password"))
-        self.login.setText(_translate("LoginWindow", "Ligin"))
+        self.login.setText(_translate("LoginWindow", "Вход"))

@@ -42,7 +42,7 @@ CREATE TABLE suppliers(
 
 CREATE TABLE supplies(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    data DATA,
+    date DATE,
     quantity INTEGER,
     item_id INTEGER,
     supplaer_id INTEGER,
@@ -56,7 +56,7 @@ CREATE TABLE supplies(
 
 CREATE TABLE orders(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    data DATA,
+    date DATE,
     quantity INTEGER,
     price_order INTEGER,
     user_id INTEGER,

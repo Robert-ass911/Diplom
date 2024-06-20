@@ -5,13 +5,13 @@ class SuppliesDatabaseScripts(DBManager):
         super().__init__()
         
     def get_supplies(self):
-        req = self.execute("SELECT id, data, quantity, item_id, supplaer_id "
+        req = self.execute("SELECT id, date_create, quantity, item_id, supplaer_id "
                         "FROM supplies ")
         
         return req
     
     def create_shipment(self, data, quantity, item_id, supplaer_id):
-        req = self.execute("INSERT INTO supplies(data, quantity, item_id, supplaer_id) "
+        req = self.execute("INSERT INTO supplies(date_create, quantity, item_id, supplaer_id) "
                         "VALUES (?, ?, ?, ?) ", 
                         args=(data, quantity, item_id, supplaer_id))
         

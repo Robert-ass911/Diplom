@@ -11,7 +11,7 @@ class OrderDatabaseScripts(DBManager):
         return req
 
     def create_order(self, data, quantity, price_order, user_id, item_id):
-        req = self.execute("INSERT INTO orders(data, quantity, price_order, user_id, item_id) "
+        req = self.execute("INSERT INTO orders(date_create, quantity, price_order, user_id, item_id) "
                         "VALUES (?, ?, ?, ?, ?) ", 
                         args=(data, quantity, price_order, user_id, item_id, ), many=False)
         

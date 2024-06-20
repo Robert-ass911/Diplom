@@ -42,7 +42,7 @@ CREATE TABLE suppliers(
 
 CREATE TABLE supplies(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    date DATE,
+    date_create DATE,
     quantity INTEGER,
     item_id INTEGER,
     supplaer_id INTEGER,
@@ -56,7 +56,7 @@ CREATE TABLE supplies(
 
 CREATE TABLE orders(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    date DATE,
+    date_create DATE,
     quantity INTEGER,
     price_order INTEGER,
     user_id INTEGER,
@@ -93,12 +93,12 @@ INSERT INTO suppliers (name, phone, addres) VALUES
     ('ООО "Стиляга"', 2222222, 'ул. Сусликова, 3'),
     ('ООО "Мебель в дом"', 2222222, 'ул. Елисеева, 3');
 
-INSERT INTO supplies (data, quantity, item_id, supplaer_id) VALUES 
-    ('2024-05-22', 3, 1, 1), 
-    ('2024-05-22', 20, 2, 2), 
-    ('2024-05-22', 13, 3, 1);
-
-INSERT INTO orders (data, quantity, price_order, user_id, item_id) VALUES 
+INSERT INTO orders (date_create, quantity, price_order, user_id, item_id) VALUES 
     ('2024-05-22', 2, 200, 1, 1),
     ('2024-05-22', 5, 100, 2, 2),
     ('2024-05-22', 3, 75, 1, 3);
+
+INSERT INTO supplies (date_create, quantity, item_id, supplaer_id) VALUES 
+    ('2024-05-22', 3, 1, 1), 
+    ('2024-05-22', 20, 2, 2), 
+    ('2024-05-22', 13, 3, 1);
